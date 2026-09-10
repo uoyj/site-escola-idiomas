@@ -1,0 +1,31 @@
+{
+  "home": {
+    "title": "Language & Co - Language School",
+    "subtitle": "Learn languages fluently and confidently",
+    "cta": "Start Today",
+    "about": "About Us",
+    "courses": "Courses",
+    "contact": "Contact"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "We are a language school committed to excellence in teaching foreign languages.",
+    "mission": "Our mission is to develop communication proficiency in an inclusive and dynamic learning environment."
+  },
+  "courses": {
+    "title": "Our Courses",
+    "english": "English",
+    "spanish": "Spanish",
+    "french": "French",
+    "german": "German",
+    "japanese": "Japanese",
+    "viewDetails": "View details"
+  },
+  "contact": {
+    "title": "Contact",
+    "address": "123 Language Ave - Downtown",
+    "phone": "(11) 99999-9999",
+    "email": "contact@languageandco.com",
+    "whatsapp": "WhatsApp"
+  }
+}

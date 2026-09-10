@@ -1,0 +1,31 @@
+{
+  "home": {
+    "title": "Idioma & Cia - Escola de Idiomas",
+    "subtitle": "Aprenda idiomas com fluência e confiança",
+    "cta": "Comece hoje",
+    "about": "Sobre Nós",
+    "courses": "Cursos",
+    "contact": "Contato"
+  },
+  "about": {
+    "title": "Sobre Nós",
+    "description": "Somos uma escola de idiomas comprometida com a excelência no ensino de línguas estrangeiras.",
+    "mission": "Nossa missão é desenvolver proficientes de comunicação em um ambiente de aprendizagem inclusivo e dinâmico."
+  },
+  "courses": {
+    "title": "Nossos Cursos",
+    "english": "Inglês",
+    "spanish": "Espanhol",
+    "french": "Francês",
+    "german": "Alemão",
+    "japanese": "Japonês",
+    "viewDetails": "Ver detalhes"
+  },
+  "contact": {
+    "title": "Contato",
+    "address": "Av. das Idiomas, 123 - Centro",
+    "phone": "(11) 99999-9999",
+    "email": "contato@idiemaregia.com",
+    "whatsapp": "WhatsApp"
+  }
+}
