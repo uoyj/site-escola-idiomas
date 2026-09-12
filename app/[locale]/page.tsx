@@ -14,6 +14,7 @@ export default async function Home({
   const coursesT = await getTranslations({ locale, namespace: 'coursesPreview' });
   const statsT = await getTranslations({ locale, namespace: 'stats' });
   const testimonialsT = await getTranslations({ locale, namespace: 'testimonialsPreview' });
+  const finalCta = await getTranslations({ locale, namespace: 'finalCta' });
   const courses = await getCourses(locale);
   const testimonials = await getTestimonials(locale);
 
@@ -193,11 +194,10 @@ export default async function Home({
           <div className="relative overflow-hidden rounded-3xl border border-border bg-primary/5 p-12 md:p-16 text-center">
             <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-primary/10 blur-3xl" />
             <h2 className="relative text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
-              Pronto para comecar?
+              {finalCta('title')}
             </h2>
             <p className="relative text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-              Agende sua aula experimental gratuita e descubra como a Idioma & Cia pode
-              transformar seu aprendizado de idiomas.
+              {finalCta('subtitle')}
             </p>
             <Link href={`/${locale}/contato`}>
               <button
