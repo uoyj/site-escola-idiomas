@@ -7,16 +7,39 @@ import { Plus_Jakarta_Sans } from 'next/font/google';
 import { ThemeProvider } from '@/app/theme/theme-provider';
 import { PaletteProvider } from '@/app/theme/palette-provider';
 import { Header } from '@/components/header';
+import type { Metadata } from 'next';
 
 const font = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-plus-jakarta',
 });
 
-export const metadata = {
-  title: 'Idioma & Cia - Escola de Idiomas',
-  description: 'Aprenda idiomas com fluidez e confianca',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const title = 'Idioma & Cia - Escola de Idiomas';
+  const description = 'Aprenda idiomas com fluidez e confianca';
+  const localizedTitle =
+    locale === 'en' ? 'Language & Co - Language School' : title;
+  const localizedDescription =
+    locale === 'en'
+      ? 'Learn languages fluently and confidently'
+      : description;
+  return {
+    title: localizedTitle,
+    description: localizedDescription,
+    // Alternate language versions for SEO
+    alternates: {
+      languages: {
+        pt: locale === 'pt' ? undefined : '/pt',
+        en: locale === 'en' ? undefined : '/en',
+      },
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
