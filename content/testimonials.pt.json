@@ -1,0 +1,10 @@
+{
+  "testimonials": [
+    {
+      "id": "testimonial-1",
+      "name": "Maria Silva",
+      "text": "Estudar na escola transformou minha carreira. Recomendo para todos!",
+      "course": "Inglês Conversação"
+    }
+  ]
+}

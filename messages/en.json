@@ -21,11 +21,35 @@
     "japanese": "Japanese",
     "viewDetails": "View details"
   },
+  "aulas": {
+    "title": "Our Classes",
+    "subtitle": "Choose the ideal course for you",
+    "ctaButton": "Learn More",
+    "noCourses": "No courses found"
+  },
   "contact": {
     "title": "Contact",
     "address": "123 Language Ave - Downtown",
     "phone": "(11) 99999-9999",
     "email": "contact@languageandco.com",
     "whatsapp": "WhatsApp"
+  },
+  "AulasPage": {
+    "metaTitle": "Classes and Courses",
+    "metaDescription": "Discover our language courses with small groups and focus on conversation.",
+    "title": "Our Classes",
+    "subtitle": "Choose the ideal course for your level"
+  },
+  "SobrePage": {
+    "metaTitle": "About Our Language School",
+    "metaDescription": "Learn about the history and mission of Language & Co, a school committed to quality teaching.",
+    "title": "About Our School",
+    "subtitle": "Discover our journey and methodology"
+  },
+  "ContatoPage": {
+    "metaTitle": "Contact Us - Book Your Free Class",
+    "metaDescription": "Get in touch with Language & Co via WhatsApp and book your free trial class.",
+    "title": "Contact Us",
+    "cta": "Book a Free Trial Class on WhatsApp"
   }
 }

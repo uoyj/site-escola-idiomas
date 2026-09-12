@@ -1,0 +1,10 @@
+{
+  "courses": [
+    {
+      "id": "ingles-conversacao",
+      "title": "Inglês Conversação",
+      "level": "Intermediário",
+      "description": "Foco em fluência oral para o dia a dia."
+    }
+  ]
+}

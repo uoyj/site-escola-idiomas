@@ -1,25 +1,31 @@
 {
   "home": {
     "title": "Idioma & Cia - Escola de Idiomas",
-    "subtitle": "Aprenda idiomas com fluência e confiança",
-    "cta": "Comece hoje",
-    "about": "Sobre Nós",
+    "subtitle": "Aprenda idiomas com fluidez e confianca",
+    "cta": "Comecar hoje",
+    "about": "Sobre Nos",
     "courses": "Cursos",
     "contact": "Contato"
   },
   "about": {
-    "title": "Sobre Nós",
-    "description": "Somos uma escola de idiomas comprometida com a excelência no ensino de línguas estrangeiras.",
-    "mission": "Nossa missão é desenvolver proficientes de comunicação em um ambiente de aprendizagem inclusivo e dinâmico."
+    "title": "Sobre Nos",
+    "description": "Somos uma escola de idiomas comprometida com a excelencia no ensino de linguas estrangeiras.",
+    "mission": "Nossa missao e desenvolver proficientes de comunicacao em um ambiente de aprendizagem inclusivo e dinamico."
   },
   "courses": {
     "title": "Nossos Cursos",
-    "english": "Inglês",
+    "english": "Ingles",
     "spanish": "Espanhol",
-    "french": "Francês",
-    "german": "Alemão",
-    "japanese": "Japonês",
+    "french": "Frances",
+    "german": "Alemao",
+    "japanese": "Japones",
     "viewDetails": "Ver detalhes"
+  },
+  "aulas": {
+    "title": "Nossas Aulas",
+    "subtitle": "Escolha o curso ideal para voce",
+    "ctaButton": "Saiba mais",
+    "noCourses": "Nenhum curso encontrado"
   },
   "contact": {
     "title": "Contato",
@@ -27,5 +33,23 @@
     "phone": "(11) 99999-9999",
     "email": "contato@idiemaregia.com",
     "whatsapp": "WhatsApp"
+  },
+  "AulasPage": {
+    "metaTitle": "Aulas e Cursos",
+    "metaDescription": "Conheca nossos cursos de idiomas com turmas pequenas e foco em conversacao.",
+    "title": "Nossas Aulas",
+    "subtitle": "Escolha o curso ideal para seu nivel"
+  },
+  "SobrePage": {
+    "metaTitle": "Sobre Nossa Escola de Idiomas",
+    "metaDescription": "Conheca a historia e missao da Idioma & Cia, uma escola comprometida com o ensino de qualidade.",
+    "title": "Sobre Nossa Escola",
+    "subtitle": "Conheca nossa trajetoria e metodologia"
+  },
+  "ContatoPage": {
+    "metaTitle": "Fale Conosco - Agende sua Aula",
+    "metaDescription": "Entre em contato com a Idioma & Cia pelo WhatsApp e agende sua aula experimental gratuita.",
+    "title": "Fale conosco",
+    "cta": "Agendar aula experimental no WhatsApp"
   }
 }

@@ -1,0 +1,10 @@
+{
+  "courses": [
+    {
+      "id": "ingles-conversacao",
+      "title": "Conversational English",
+      "level": "Intermediate",
+      "description": "Focused on everyday oral fluency."
+    }
+  ]
+}

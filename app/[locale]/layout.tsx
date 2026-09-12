@@ -3,10 +3,19 @@ import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
 import { locales } from '@/i18n/request';
+import { Plus_Jakarta_Sans } from 'next/font/google';
+import { ThemeProvider } from '@/app/theme/theme-provider';
+import { PaletteProvider } from '@/app/theme/palette-provider';
+import { Header } from '@/components/header';
+
+const font = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-plus-jakarta',
+});
 
 export const metadata = {
   title: 'Idioma & Cia - Escola de Idiomas',
-  description: 'Aprenda idiomas com fluência e confiança',
+  description: 'Aprenda idiomas com fluidez e confianca',
 };
 
 export default async function RootLayout({
@@ -31,11 +40,16 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={font.variable} suppressHydrationWarning>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <ThemeProvider>
+          <PaletteProvider>
+            <NextIntlClientProvider messages={messages}>
+              <Header />
+              {children}
+            </NextIntlClientProvider>
+          </PaletteProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
