@@ -5,7 +5,29 @@
     "cta": "Start Today",
     "about": "About Us",
     "courses": "Courses",
-    "contact": "Contact"
+    "contact": "Contact",
+    "viewDetails": "View details"
+  },
+  "hero": {
+    "title": "Master a new language with confidence",
+    "subtitle": "Small groups, personalized methodology, and conversation-focused. Learn with specialists and progress fast.",
+    "primaryCta": "Start Today",
+    "secondaryCta": "Talk to an advisor",
+    "trustBadge": "Over 500 satisfied students"
+  },
+  "coursesPreview": {
+    "title": "Courses you'll love",
+    "subtitle": "From beginner to advanced, we have the right course for your pace.",
+    "viewAll": "View all courses"
+  },
+  "stats": {
+    "years": "Years of experience",
+    "students": "Students graduated",
+    "languages": "Languages"
+  },
+  "testimonialsPreview": {
+    "title": "What our students say",
+    "subtitle": "Real results from those who learned at Language & Co"
   },
   "about": {
     "title": "About Us",

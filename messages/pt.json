@@ -5,7 +5,29 @@
     "cta": "Comecar hoje",
     "about": "Sobre Nos",
     "courses": "Cursos",
-    "contact": "Contato"
+    "contact": "Contato",
+    "viewDetails": "Ver detalhes"
+  },
+  "hero": {
+    "title": "Domine um novo idioma com confiança",
+    "subtitle": "Turmas pequenas, metodologia personalizada e foco em conversacao. Aprenda com especialistas e evolua rapido.",
+    "primaryCta": "Comecar hoje",
+    "secondaryCta": "Falar com um consultor",
+    "trustBadge": "Mais de 500 alunos satisfeitos"
+  },
+  "coursesPreview": {
+    "title": "Cursos que voce vai amar",
+    "subtitle": "Do nivel iniciante ao avancado, temos o curso perfeito para seu ritmo.",
+    "viewAll": "Ver todos os cursos"
+  },
+  "stats": {
+    "years": "Anos de experiencia",
+    "students": "Alunos formados",
+    "languages": "Idiomas"
+  },
+  "testimonialsPreview": {
+    "title": "O que nossos alunos dizem",
+    "subtitle": "Resultados reais de quem aprendeu na Idioma & Cia"
   },
   "about": {
     "title": "Sobre Nos",
