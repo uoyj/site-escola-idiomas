@@ -22,9 +22,9 @@ export default async function Home({
     <main className="flex flex-col min-h-screen bg-background text-foreground">
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/5 to-transparent" />
-        <div className="absolute top-0 right-0 -translate-x-1/2 translate-y-[-30%] w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute bottom-0 left-0 translate-x-[-30%] translate-y-1/2 w-[500px] h-[500px] rounded-full bg-accent/10 blur-3xl" />
+        <div className="absolute inset-0 bg-linear-to-br from-primary/15 via-primary/5 to-transparent" />
+        <div className="absolute top-0 right-0 -translate-x-1/2 translate-y-[-30%] w-150 h-150 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute bottom-0 left-0 translate-x-[-30%] translate-y-1/2 w-125 h-125 rounded-full bg-accent/10 blur-3xl" />
 
         <div className="relative container mx-auto px-6 pt-32 pb-24 md:pt-40 md:pb-32">
           <div className="max-w-3xl">
@@ -121,7 +121,7 @@ export default async function Home({
                 <span className="mb-3 inline-block rounded-full bg-accent/10 px-3 py-1 text-sm font-medium text-accent">
                   {course.level}
                 </span>
-                <p className="text-muted-foreground mb-6 flex-grow">{course.description}</p>
+                <p className="text-muted-foreground mb-6 grow">{course.description}</p>
                 <Link href="/aulas">
                   <button
                     type="button"

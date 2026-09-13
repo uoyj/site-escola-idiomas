@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useReducer } from 'react';
 
 type Palette = 'calm' | 'neutral';
 
@@ -11,31 +11,32 @@ interface PaletteContextValue {
 
 const PaletteContext = createContext<PaletteContextValue | null>(null);
 
+function paletteReducer(state: Palette, action: Palette): Palette {
+  return action;
+}
+
 export function PaletteProvider({ children }: { children: React.ReactNode }) {
   // Estado inicial precisa ser IGUAL ao que o servidor renderiza (que nao
   // tem acesso a localStorage). Ler localStorage direto no useState()
   // causaria hydration mismatch caso o usuario tenha 'neutral' salvo.
-  const [palette, setPalette] = useState<Palette>('calm');
-  const [mounted, setMounted] = useState(false);
+  const [palette, dispatch] = useReducer(paletteReducer, 'calm');
 
   // So depois do mount no client sabemos o valor real salvo.
   useEffect(() => {
     const saved = localStorage.getItem('palette') as Palette | null;
     const resolved = saved === 'calm' || saved === 'neutral' ? saved : 'calm';
-    setPalette(resolved);
+    dispatch(resolved);
     document.documentElement.setAttribute('data-palette', resolved);
-    setMounted(true);
   }, []);
 
-  // Persiste apenas apos o mount, quando o usuario troca de paleta.
+  // Persiste toda vez que a paleta muda no client.
   useEffect(() => {
-    if (!mounted) return;
     document.documentElement.setAttribute('data-palette', palette);
     localStorage.setItem('palette', palette);
-  }, [palette, mounted]);
+  }, [palette]);
 
   return (
-    <PaletteContext.Provider value={{ palette, setPalette }}>
+    <PaletteContext.Provider value={{ palette, setPalette: dispatch }}>
       {children}
     </PaletteContext.Provider>
   );

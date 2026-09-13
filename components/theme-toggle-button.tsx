@@ -1,63 +1,55 @@
 'use client';
 
-import { useSyncExternalStore } from 'react';
+import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import { usePalette } from '@/app/theme/palette-provider';
 import { cn } from 'cn';
+import { Switch as SwitchPrimitive } from 'radix-ui';
+import { Sun, Moon, Leaf, Palette } from 'lucide-react';
 
 /**
  * Botao combinado: troca de tema (claro/escuro) e paleta (calm/neutral).
  *
- * next-themes com enableSystem resolvemos resolvedTheme apenas no client
+ * next-themes com enableSystem resolve `resolvedTheme` apenas no client
  * (post-mount), porque o server nao tem acesso a localStorage nem a
  * prefers-color-scheme do usuario. Usar resolvedTheme diretamente causa
  * hydration mismatch: server renderiza 'light' (resolvedTheme === undefined),
  * client re-renderiza 'dark' se o OS estiver no modo escuro.
  *
- * Solucao: useSyncExternal para detectar mount no client sem setState
- * em effect. Antes do mount, isMounted === false e isDark === false
- * (server render). Apos mount, useSyncExternal retorna true e re-render
- * correto.
+ * Solucao: manter sempre a MESMA arvore de elementos no server e no
+ * client. `isDark`/`isNeutral` ficam false ate mounted === true, de
+ * propósito — o cliente concorda deliberadamente com o server no
+ * primeiro paint. suppressHydrationWarning é usado apenas nos
+ * elementos cujo className muda por depender do tema/paleta.
  *
- * NOTA: suppressHydrationWarning no <div> externo NAO protege os filhos e
- * esconde mismatches reais — foi removido de proposito.
+ * Os ícones Lucide sao renderizados dentro do thumb,
+ * centralizados com absolute inset-0 m-auto, cross-fade por opacidade.
  */
 export function ThemeToggleButton() {
+  const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
   const { palette, setPalette } = usePalette();
 
-  const isMounted = useSyncExternalStore(
-    () => () => false,
-    () => false,
-    () => true,
-  );
-  const isDark = isMounted && resolvedTheme === 'dark';
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  const toggleTheme = () => {
-    setTheme(isDark ? 'light' : 'dark');
-  };
+  // Antes do mount, tratamos como 'claro'/'calm' de propósito — mesmo
+  // estado que o servidor renderizou. So depois que o efeito acima roda
+  // é que passamos a refletir o valor real (resolvedTheme/palette).
+  const isDark = mounted && resolvedTheme === 'dark';
+  const isNeutral = mounted && palette === 'neutral';
 
-  const togglePalette = () => {
-    setPalette(palette === 'calm' ? 'neutral' : 'calm');
-  };
-
-  // Placeholder: mesmo tamanho/layout dos botoes reais, sem logica de tema
-  if (!isMounted) {
-    return (
-      <div className="flex items-center gap-2">
-        <div className="h-8 w-14 rounded-full border border-border bg-muted" />
-        <div className="h-8 w-14 rounded-full border border-border bg-muted" />
-      </div>
-    );
-  }
+  const toggleTheme = () => setTheme(isDark ? 'light' : 'dark');
+  const togglePalette = () => setPalette(palette === 'calm' ? 'neutral' : 'calm');
 
   return (
     <div className="flex items-center gap-2">
-      {/* Botao de tema claro/escuro */}
-      <button
-        type="button"
-        onClick={toggleTheme}
+      {/* Toggle de tema claro/escuro */}
+      <SwitchPrimitive.Root
         aria-label="Alternar tema claro/escuro"
+        checked={isDark}
+        onCheckedChange={toggleTheme}
         className={cn(
           'relative inline-flex h-8 w-14 items-center rounded-full border border-border',
           'transition-colors duration-300',
@@ -65,66 +57,66 @@ export function ThemeToggleButton() {
         )}
       >
         <span className="sr-only">Alternar tema</span>
-        <span
+        <SwitchPrimitive.Thumb
+          suppressHydrationWarning
           className={cn(
-            'inline-block h-6 w-6 rounded-full shadow transform transition-transform duration-300',
-            isDark
-              ? 'translate-x-3 bg-primary-foreground'
-              : 'translate-x-1 bg-white',
-          )}
-        />
-        <span
-          className={cn(
-            'absolute left-1.5 text-yellow-400 transition-opacity duration-300',
-            isDark ? 'opacity-0' : 'opacity-100',
+            'absolute top-0.5 left-1 h-6 w-6 rounded-full shadow transform transition-transform duration-300',
+            isDark ? 'translate-x-6 bg-primary-foreground' : 'translate-x-0 bg-white',
           )}
         >
-          ☀️
-        </span>
-        <span
-          className={cn(
-            'absolute right-1.5 text-blue-400 transition-opacity duration-300',
-            isDark ? 'opacity-100' : 'opacity-0',
-          )}
-        >
-          🌙
-        </span>
-      </button>
+          <Sun
+            suppressHydrationWarning
+            size={14}
+            className={cn(
+              'absolute inset-0 m-auto text-yellow-400 transition-opacity duration-300',
+              isDark ? 'opacity-0' : 'opacity-100',
+            )}
+          />
+          <Moon
+            suppressHydrationWarning
+            size={14}
+            className={cn(
+              'absolute inset-0 m-auto text-blue-400 transition-opacity duration-300',
+              isDark ? 'opacity-100' : 'opacity-0',
+            )}
+          />
+        </SwitchPrimitive.Thumb>
+      </SwitchPrimitive.Root>
 
-      {/* Botao de paleta calm/neutral */}
-      <button
-        type="button"
-        onClick={togglePalette}
+      {/* Toggle de paleta calm/neutral */}
+      <SwitchPrimitive.Root
         aria-label="Alternar paleta de cores"
+        checked={isNeutral}
+        onCheckedChange={togglePalette}
         className="relative inline-flex h-8 w-14 items-center rounded-full border border-border bg-muted transition-colors duration-300"
       >
         <span className="sr-only">Alternar paleta</span>
-        <span
+        <SwitchPrimitive.Thumb
+          suppressHydrationWarning
           className={cn(
-            'inline-block h-6 w-6 rounded-full shadow transform transition-transform duration-300',
-            palette === 'neutral'
-              ? 'translate-x-3'
-              : 'translate-x-1',
+            'absolute top-0.5 left-1 h-6 w-6 rounded-full shadow transform transition-transform duration-300',
             'bg-primary',
-          )}
-        />
-        <span
-          className={cn(
-            'absolute left-1.5 transition-opacity duration-300 text-xs',
-            palette === 'neutral' ? 'opacity-0' : 'opacity-100',
+            isNeutral ? 'translate-x-6' : 'translate-x-0',
           )}
         >
-          🧘
-        </span>
-        <span
-          className={cn(
-            'absolute right-1.5 transition-opacity duration-300 text-xs',
-            palette === 'neutral' ? 'opacity-100' : 'opacity-0',
-          )}
-        >
-          🎨
-        </span>
-      </button>
+          <Leaf
+            suppressHydrationWarning
+            size={14}
+            className={cn(
+              'absolute inset-0 m-auto text-green-500 transition-opacity duration-300',
+              isNeutral ? 'opacity-0' : 'opacity-100',
+            )}
+          />
+          <Palette
+            suppressHydrationWarning
+            size={14}
+            className={cn(
+              'absolute inset-0 m-auto text-purple-500 transition-opacity duration-300',
+              isNeutral ? 'opacity-100' : 'opacity-0',
+            )}
+          />
+        </SwitchPrimitive.Thumb>
+      </SwitchPrimitive.Root>
     </div>
   );
 }
