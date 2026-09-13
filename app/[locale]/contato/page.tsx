@@ -10,8 +10,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: t('metaTitle'), description: t('metaDescription') };
 }
 
-export default async function ContatoPage({ params }: Props) {
-  const { locale } = await params;
+export default async function ContatoPage() {
   const t = await getTranslations('ContatoPage');
 
   const numero = '5541999999999';

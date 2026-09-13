@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import { getCourses } from '@/content';
 import { getTestimonials } from '@/content';
 
@@ -38,7 +38,7 @@ export default async function Home({
               {hero('subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href={`/${locale}/contato`}>
+              <Link href="/contato">
                 <button
                   type="button"
                   className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
@@ -46,7 +46,7 @@ export default async function Home({
                   {hero('primaryCta')}
                 </button>
               </Link>
-              <Link href={`/${locale}/sobre`}>
+              <Link href="/sobre">
                 <button
                   type="button"
                   className="inline-flex items-center justify-center rounded-lg border border-border bg-background px-8 py-4 text-base font-semibold text-foreground transition-all hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
@@ -122,7 +122,7 @@ export default async function Home({
                   {course.level}
                 </span>
                 <p className="text-muted-foreground mb-6 flex-grow">{course.description}</p>
-                <Link href={`/${locale}/aulas`}>
+                <Link href="/aulas">
                   <button
                     type="button"
                     className="mt-auto rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
@@ -135,7 +135,7 @@ export default async function Home({
           </div>
 
           <div className="mt-12 text-center">
-            <Link href={`/${locale}/aulas`}>
+            <Link href="/aulas">
               <button
                 type="button"
                 className="inline-flex items-center justify-center rounded-lg border border-border bg-background px-8 py-4 text-base font-semibold text-foreground transition-colors hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
@@ -176,7 +176,7 @@ export default async function Home({
                       </svg>
                     ))}
                   </div>
-                  <p className="text-muted-foreground mb-4">"{tItem.text}"</p>
+                  <p className="text-muted-foreground mb-4">{'"'}{tItem.text}{'"'}</p>
                   <div>
                     <p className="font-semibold text-foreground">{tItem.name}</p>
                     <p className="text-sm text-muted-foreground">{tItem.course}</p>
@@ -199,7 +199,7 @@ export default async function Home({
             <p className="relative text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
               {finalCta('subtitle')}
             </p>
-            <Link href={`/${locale}/contato`}>
+            <Link href="/contato">
               <button
                 type="button"
                 className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground transition-all hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"

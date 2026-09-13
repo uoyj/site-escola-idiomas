@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
 import { usePalette } from '@/app/theme/palette-provider';
 import { cn } from 'cn';
@@ -14,25 +14,24 @@ import { cn } from 'cn';
  * hydration mismatch: server renderiza 'light' (resolvedTheme === undefined),
  * client re-renderiza 'dark' se o OS estiver no modo escuro.
  *
- * Solucao oficial do next-themes: estado `mounted`. Antes do primeiro
- * useEffect, renderizamos um placeholder de mesmo tamanho — zero layout shift
- * e nenhuma dependencia de resolvedTheme, garantindo server === client no
- * primeiro paint. Apos montar, e uma atualizacao client-side normal, nao
- * conta como mismatch.
+ * Solucao: useSyncExternal para detectar mount no client sem setState
+ * em effect. Antes do mount, isMounted === false e isDark === false
+ * (server render). Apos mount, useSyncExternal retorna true e re-render
+ * correto.
  *
  * NOTA: suppressHydrationWarning no <div> externo NAO protege os filhos e
  * esconde mismatches reais — foi removido de proposito.
  */
 export function ThemeToggleButton() {
-  const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
   const { palette, setPalette } = usePalette();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const isDark = resolvedTheme === 'dark';
+  const isMounted = useSyncExternalStore(
+    () => () => false,
+    () => false,
+    () => true,
+  );
+  const isDark = isMounted && resolvedTheme === 'dark';
 
   const toggleTheme = () => {
     setTheme(isDark ? 'light' : 'dark');
@@ -43,7 +42,7 @@ export function ThemeToggleButton() {
   };
 
   // Placeholder: mesmo tamanho/layout dos botoes reais, sem logica de tema
-  if (!mounted) {
+  if (!isMounted) {
     return (
       <div className="flex items-center gap-2">
         <div className="h-8 w-14 rounded-full border border-border bg-muted" />

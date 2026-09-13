@@ -57,7 +57,7 @@
     "title": "Contato",
     "address": "Av. das Idiomas, 123 - Centro",
     "phone": "(11) 99999-9999",
-    "email": "contato@idiemaregia.com",
+    "email": "contato@idiomaecia.com",
     "whatsapp": "WhatsApp"
   },
   "AulasPage": {
@@ -77,5 +77,10 @@
     "metaDescription": "Entre em contato conosco pelo WhatsApp e agende sua aula experimental gratuita.",
     "title": "Fale conosco",
     "cta": "Agendar aula experimental no WhatsApp"
+  },
+  "NotFound": {
+    "title": "Página não encontrada",
+    "description": "Desculpe, a página que você está procurando não existe.",
+    "backHome": "Voltar para a home"
   }
 }

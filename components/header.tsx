@@ -1,7 +1,7 @@
 'use client';
 
-import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import { ThemeToggleButton } from '@/components/theme-toggle-button';
 import { locales } from '@/i18n/request';
 import { cn } from 'cn';
@@ -9,25 +9,25 @@ import { siteConfig } from '@/content/site-config';
 
 export function Header() {
   const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
   const t = useTranslations('home');
 
   const links = [
-    { key: 'about', label: t('about'), href: `/${locale}/sobre` },
-    { key: 'courses', label: t('courses'), href: `/${locale}/aulas` },
-    { key: 'contact', label: t('contact'), href: `/${locale}/contato` },
-  ];
+    { key: 'about', label: t('about'), href: '/sobre' },
+    { key: 'courses', label: t('courses'), href: '/aulas' },
+    { key: 'contact', label: t('contact'), href: '/contato' },
+  ] as const;
 
   const switchLocale = (nextLocale: string) => {
     if (nextLocale === locale) return;
-    const path = window.location.pathname;
-    const newPath = path.replace(`/${locale}`, `/${nextLocale}`);
-    window.location.href = newPath;
+    router.replace(pathname, { locale: nextLocale });
   };
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto flex h-14 items-center justify-between px-4">
-        <Link href={`/${locale}`} className="font-bold text-lg">
+        <Link href="/" className="font-bold text-lg">
           {siteConfig.name}
         </Link>
 

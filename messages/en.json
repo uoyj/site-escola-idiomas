@@ -77,5 +77,10 @@
     "metaDescription": "Get in touch with us via WhatsApp and book your free trial class.",
     "title": "Contact Us",
     "cta": "Book a Free Trial Class on WhatsApp"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "Sorry, the page you are looking for does not exist.",
+    "backHome": "Back to home"
   }
 }
