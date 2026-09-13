@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { ThemeToggleButton } from '@/components/theme-toggle-button';
 import { locales } from '@/i18n/request';
 import { cn } from 'cn';
+import { siteConfig } from '@/content/site-config';
 
 export function Header() {
   const locale = useLocale();
@@ -27,7 +28,7 @@ export function Header() {
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto flex h-14 items-center justify-between px-4">
         <Link href={`/${locale}`} className="font-bold text-lg">
-          Idioma & Cia
+          {siteConfig.name}
         </Link>
 
         <nav className="flex items-center gap-6">

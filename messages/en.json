@@ -1,6 +1,6 @@
 {
   "home": {
-    "title": "Language & Co - Language School",
+    "title": "Language School",
     "subtitle": "Learn languages fluently and confidently",
     "cta": "Start Today",
     "about": "About Us",
@@ -68,13 +68,13 @@
   },
   "SobrePage": {
     "metaTitle": "About Our Language School",
-    "metaDescription": "Learn about the history and mission of Language & Co, a school committed to quality teaching.",
+    "metaDescription": "Learn about the history and mission of our school, committed to quality teaching.",
     "title": "About Our School",
     "subtitle": "Discover our journey and methodology"
   },
   "ContatoPage": {
     "metaTitle": "Contact Us - Book Your Free Class",
-    "metaDescription": "Get in touch with Language & Co via WhatsApp and book your free trial class.",
+    "metaDescription": "Get in touch with us via WhatsApp and book your free trial class.",
     "title": "Contact Us",
     "cta": "Book a Free Trial Class on WhatsApp"
   }

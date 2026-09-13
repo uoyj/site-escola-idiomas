@@ -8,6 +8,7 @@ import { ThemeProvider } from '@/app/theme/theme-provider';
 import { PaletteProvider } from '@/app/theme/palette-provider';
 import { Header } from '@/components/header';
 import type { Metadata } from 'next';
+import { siteConfig } from '@/content/site-config';
 
 const font = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -20,22 +21,21 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const title = 'Idioma & Cia - Escola de Idiomas';
-  const description = 'Aprenda idiomas com fluidez e confianca';
-  const localizedTitle =
-    locale === 'en' ? 'Language & Co - Language School' : title;
-  const localizedDescription =
-    locale === 'en'
-      ? 'Learn languages fluently and confidently'
-      : description;
+  const loc = locale as 'pt' | 'en';
   return {
-    title: localizedTitle,
-    description: localizedDescription,
+    title: {
+      default: `${siteConfig.name} - ${siteConfig.tagline[loc]}`,
+      template: `%s - ${siteConfig.name}`,
+    },
+    description:
+      loc === 'en'
+        ? 'Learn languages fluently and confidently'
+        : 'Aprenda idiomas com fluidez e confiança',
     // Alternate language versions for SEO
     alternates: {
       languages: {
-        pt: locale === 'pt' ? undefined : '/pt',
-        en: locale === 'en' ? undefined : '/en',
+        pt: loc === 'pt' ? undefined : '/pt',
+        en: loc === 'en' ? undefined : '/en',
       },
     },
   };
